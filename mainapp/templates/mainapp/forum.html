@@ -1,0 +1,56 @@
+{% extends 'blog_base.html' %}
+
+
+
+{% block menubar %}
+    <a class="nav-item nav-link" href="{% url 'ForumTopicCreateView' %}">Dodaj temat na forum</a>
+    <a class="nav-item nav-link" href="{% url 'ForumPostCreateView' %}">Dodaj post na forum</a>
+{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+
+
+
+
+        {% for topic in topics %}
+        <div class="subforum">
+
+                <div class="subforum-title">
+                    <h1>{{ topic.topic }}</h1>
+                </div>
+
+                {% for post in topic.get_posts%}
+
+                    <div class="subforum-row">
+
+                        <div class="subforum-description subforum-column">
+                            <div class="col">
+                                <h4><a href="{% url 'ForumPostDetailView' post.slug %}">{{ post.title }}</a></h4>
+                                {% if post.last_comment.0 %}
+                                <p>Ostatni wpis: {{ post.last_comment.0.author}} dnia: {{ post.last_comment.0.created_on|date:'Y-m-d H:i' }} </p>
+                                {% endif %}
+
+                            </div>
+                        </div>
+
+                    
+                    </div>
+
+                    {% endfor %}
+
+
+        </div>
+        {% endfor %}
+
+        <!--More-->
+        
+        
+        
+    </div>
+
+    <!-- Forum Info -->
+
+
+    {% endblock content %}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<?php
+$data = [
+'sessionId' => "203257",
+'merchantId' => 203257,
+'amount' => 22,
+'currency' => "PLN",
+'crc' => "0b45dd1983f5b90c"
+];
+echo hash('sha384', json_encode($data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
+return hash('sha384', json_encode($data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
+?>
+
+</body>
+</html>
+
+
+
+import hashlib
+import json
+
+j_s = json.dumps({"sessionId":"203257","merchantId":203257,"amount":22,"currency":"PLN","crc":"0b45dd1983f5b90c"})
+# print(j_s)
+m = hashlib.sha384()
+# {"sessionId":"str","merchantId":int,"amount":int,"currency":"str","crc":"str"}
+# m.update(b"203257")
+# m.update(b"203257")
+# m.update(b"22")
+# m.update(b"PLN")
+# m.update(b'json.dumps({"sessionId":"203257","merchantId":203257,"amount":22,"currency":"PLN","crc":"0b45dd1983f5b90c"})')
+m.update(b'{"sessionId":"203257","merchantId":203257,"amount":22,"currency":"PLN","crc":"0b45dd1983f5b90c"}')
+# m.update(j_s.encode('utf8'))
+
+
+
+# print(m.digest())
+# b'\x03\x1e\xdd}Ae\x15\x93\xc5\xfe\\\x00o\xa5u+7\xfd\xdf\xf7\xbcN\x84:\xa6\xaf\x0c\x95\x0fK\x94\x06'
+print(m.hexdigest())
+# print(hashlib.sha384(b'j_s').hexdigest())

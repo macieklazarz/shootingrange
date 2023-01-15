@@ -1,0 +1,125 @@
+{% extends 'blog_base.html' %}
+
+
+
+{% block content %}
+
+<body onload="loadfields()">
+
+    <div class="container">
+
+
+
+
+  <div class="mt-2 mb-2 d-flex flex-wrap">
+    <div class="btn btn-secondary btn-sm active m-2"  onclick="HideImie()" value="Zaznacz wszystko">Imię</div>
+    <div class="btn btn-secondary btn-sm active m-2"  onclick="HideNazwisko()" value="Zaznacz wszystko">Nazwisko</div>
+    <div class="btn btn-secondary btn-sm active m-2"  onclick="HideEmail()" value="Zaznacz wszystko">Email</div>
+    <div class="btn btn-secondary btn-sm active m-2"  onclick="HideLicencja()" value="Zaznacz wszystko">Licencja</div>
+    <div class="btn btn-secondary btn-sm active m-2"  onclick="HideKlub()" value="Zaznacz wszystko">Klub</div>
+    <div class="btn btn-secondary btn-sm active m-2"  onclick="HideKlasaSedziego()" value="Zaznacz wszystko">Klasa sędziego</div>
+    <div class="btn btn-secondary btn-sm active m-2"  onclick="HideDataUrodzenia()" value="Zaznacz wszystko">Data urodzenia</div>
+    <div class="btn btn-secondary btn-sm active m-2"  onclick="HideCzlonekStowarzyszenia()" value="Zaznacz wszystko">Członek stowarzyszenia</div>
+    <div class="btn btn-secondary btn-sm active m-2"  onclick="HidePESEL()" value="Zaznacz wszystko">PESEL</div>
+    <div class="btn btn-secondary btn-sm active m-2"  onclick="HideNrTelefonu()" value="Zaznacz wszystko">Numer telefonu</div>
+    <div class="btn btn-secondary btn-sm active m-2"  onclick="HideAdres()" value="Zaznacz wszystko">Adres</div>
+    <div class="btn btn-secondary btn-sm active m-2"  onclick="HideKodPocztowy()" value="Zaznacz wszystko">Kod pocztowy</div>
+    <div class="btn btn-secondary btn-sm active m-2"  onclick="HideMiejscowosc()" value="Zaznacz wszystko">Miejscowość</div>
+    <div class="btn btn-secondary btn-sm active m-2"  onclick="HideImięOjca()" value="Zaznacz wszystko">Imię ojca</div>
+    <div class="btn btn-secondary btn-sm active m-2"  onclick="HideMiejsceUrodzenia()" value="Zaznacz wszystko">Miejsce urodzenia</div>
+    <div class="btn btn-secondary btn-sm active m-2"  onclick="HideNumerPatentu()" value="Zaznacz wszystko">Numer patentu</div>
+    <div class="btn btn-secondary btn-sm active m-2"  onclick="HideOplata()" value="Zaznacz wszystko">Opłata</div>
+  </div>
+
+
+        <table class="table table-hover table-responsive table-bordered mx-auto w-auto align-middle md:text-center table-condensed table-striped" id="example" style="text-align: center;">
+            <thead class="table-secondary">
+                <tr>
+                    <th class="m" id="imie" onclick="sort_load()">Imie</th>
+                    <th class="m" id="nazwisko" onclick="sort_load()">Nazwisko</th>
+                    <th class="m" id="email" style="display: none" onclick="sort_load()">Email</th>
+                    <th class="m" id="licencja" onclick="sort_load()">Licencja</th>
+                    <th class="m" id="klub" onclick="sort_load()">Klub</th>
+                    <th class="m" id="klasa_sedziego" style="display: none" onclick="sort_load()">Klasa sędziego</th>
+                    <th class="m" id="data_urodzenia" style="display: none" onclick="sort_load()">Data urodzenia</th>
+                    <th class="m" id="is_stowarzyszenie_member" onclick="sort_load()">Członek stowarzyszenia</th>
+                    <th class="m" id="pesel" style="display: none" onclick="sort_load()">PESEL</th>
+                    <th class="m" id="nr_telefonu" style="display: none" onclick="sort_load()">Numer telefonu</th>
+                    <th class="m" id="adres" style="display: none" onclick="sort_load()">Adres</th>
+                    <th class="m" id="kod_poczowy" style="display: none" onclick="sort_load()">Kod pocztowy</th>
+                    <th class="m" id="miejscowosc" style="display: none" onclick="sort_load()">Miejscowość</th>
+                    <th class="m" id="imie_ojca" style="display: none" onclick="sort_load()">Imię ojca</th>
+                    <th class="m" id="miejsce_urodzenia" style="display: none" onclick="sort_load()">Miejsce urodzenia</th>
+                    <th class="m" id="nr_patentu_strzeleckiego" style="display: none" onclick="sort_load()">Numer patentu</th>
+                    <th class="m" id="oplata" onclick="sort_load()">Opłata</th>
+                    <th class="m" id="edycja">Edycja</th>
+
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th class="m" id="imie" onclick="loadfields()">Imie</th>
+                    <th class="m" id="nazwisko" onclick="loadfields()">Nazwisko</th>
+                    <th class="m" id="email" style="display: none" onclick="loadfields()">Email</th>
+                    <th class="m" id="licencja" onclick="loadfields()">Licencja</th>
+                    <th class="m" id="klub" onclick="loadfields()">Klub</th>
+                    <th class="m" id="klasa_sedziego" style="display: none" onclick="loadfields()">Klasa sędziego</th>
+                    <th class="m" id="data_urodzenia" style="display: none" onclick="loadfields()">Data urodzenia</th>
+                    <th class="m" id="is_stowarzyszenie_member" onclick="loadfields()">Członek stowarzyszenia</th>
+                    <th class="m" id="pesel" style="display: none" onclick="loadfields()">PESEL</th>
+                    <th class="m" id="nr_telefonu" style="display: none" onclick="loadfields()">Numer telefonu style="display: none"</th>
+                    <th class="m" id="adres" style="display: none" onclick="loadfields()">Adres</th>
+                    <th class="m" id="kod_poczowy" style="display: none" onclick="loadfields()">Kod pocztowy</th>
+                    <th class="m" id="miejscowosc" style="display: none" onclick="loadfields()">Miejscowość</th>
+                    <th class="m" id="imie_ojca" style="display: none" onclick="loadfields()">Imię ojca</th>
+                    <th class="m" id="miejsce_urodzenia" style="display: none" onclick="loadfields()">Miejsce urodzenia</th>
+                    <th class="m" id="nr_patentu_strzeleckiego" style="display: none" onclick="loadfields()">Numer patentu</th>
+                    <th class="m" id="oplata" onclick="loadfields()">Opłata</th>
+                    <th class="m" id="edycja">Edycja</th>
+
+                </tr>
+            </tfoot>
+            <tbody>
+                {% for account in Accounts %}
+            <tr>
+                <td class="m" id="imie">{{account.imie}}</td>
+                <td class="m" id="nazwisko">{{account.nazwisko}}</td>
+                <td class="m" id="email" style="display: none">{{account.email}}</td>
+                <td class="m" id="licencja">{{account.licencja}}</td>
+                <td class="m" id="klub">{{account.klub}}</td>
+                <td class="m" id="klasa_sedziego" style="display: none">{{account.klasa_sedziego}}</td>
+                <td class="m" id="data_urodzenia" style="display: none">{{account.data_urodzenia}}</td>
+                <td class="m" id="is_stowarzyszenie_member">{% if account.is_stowarzyszenie_member == 1 %} Tak {% else %} Nie {% endif %}</td>
+
+                <td class="m" id="pesel" style="display: none">{{account.pesel}}</td>
+                <td class="m" id="nr_telefonu" style="display: none">{{account.nr_telefonu}}</td>
+                <td class="m" id="adres" style="display: none">{{account.adres}}</td>
+                <td class="m" id="kod_poczowy" style="display: none">{{account.kod_poczowy}}</td>
+                <td class="m" id="miejscowosc" style="display: none">{{account.miejscowosc}}</td>
+                <td class="m" id="imie_ojca" style="display: none">{{account.imie_ojca}}</td>
+                <td class="m" id="miejsce_urodzenia" style="display: none">{{account.miejsce_urodzenia}}</td>
+                <td class="m" id="nr_patentu_strzeleckiego" style="display: none">{{account.nr_patentu_strzeleckiego}}</td>
+                <td class="m" id="oplata">{% if account.check_payment == 1 %} Jest {% else %} Brak {% endif %}</td>
+
+                <!-- <td id="edycja">{{account.user_update}}</td> -->
+                <td class="m p-0 m-0"><a href={{account.user_update}} class="btn btn-secondary btn-sm active" role="button" aria-pressed="true">Edytuj</a></td>
+            </tr>
+            {% endfor %}
+                
+            </tbody>
+
+
+            
+
+        </table>
+
+
+
+        
+        
+    </div>
+</body>
+
+
+
+    {% endblock content %}

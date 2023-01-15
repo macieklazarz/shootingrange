@@ -1,0 +1,126 @@
+{% extends 'blog_base.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+
+	<div class="content-section">
+		<form class="form-signin" method="post">{% csrf_token %}
+		    <h1 class="h3 mb-3 fw-normal">Zarejestruj użytkownika</h1>
+		     <input type="email" name="email" id="inputEmail" class="form-control"  placeholder="Email (pole obowiazkowe)"  required {% if pre_email %} value = "{{ pre_email }}" {% endif %}>
+
+		     <input type="text" name="username" id="inputUsername" class="form-control"  placeholder="Username (pole obowiazkowe)" required value = "{{ pre_username }}">
+		     <input type="text" name="imie" id="inputImie" class="form-control"  placeholder="Imię (pole obowiązkowe)" required value = "{{ pre_imie }}">
+		     <input type="text" name="nazwisko" id="inputNazwisko" class="form-control" placeholder="Nazwisko (pole obowiązkowe)" required value = "{{ pre_nazwisko }}">
+		     <input type="text" name="data_urodzenia" id="inputData_urodzenia" class="form-control" placeholder="Data urodzenia (pole obowiązkowe)" onfocus="(this.type='date')" required value = "{{ pre_data_urodzenia }}">
+		     <input type="text" name="pesel" id="inputPesel" class="form-control"  placeholder="PESEL - format: '90111111111' (pole obowiązkowe)"  pattern="[0-9]{11}" required value = "{{ pre_pesel }}">
+		     <input type="text" name="nr_telefonu" id="inputNr_telefonu" class="form-control"  placeholder="Numer telefonu - format: '600600600' (pole obowiązkowe)" pattern="[0-9]{9}" required value = "{{ pre_nr_telefonu }}">
+		     <input type="text" name="adres" id="inputAdres" class="form-control"  placeholder="Adres (pole obowiązkowe)" required value = "{{ pre_adres }}">
+		     <input type="text" name="kod_poczowy" id="inputKod_poczowy" class="form-control"  placeholder="Kod pocztowy - format: '05119' (pole obowiązkowe)" pattern="[0-9]{5}" required value = "{{ pre_kod_pocztowy }}">
+		     <input type="text" name="miejscowosc" id="inputMiejscowosc" class="form-control"  placeholder="Miejscowość (pole obowiązkowe)" required value = "{{ pre_miejscowosc }}">
+		     <input type="text" name="imie_ojca" id="inputImie_ojca" class="form-control"  placeholder="Imię ojca (pole obowiązkowe)" required value = "{{ pre_imie_ojca }}">
+		     <input type="text" name="miejsce_urodzenia" id="inputMiejsce_urodzenia" class="form-control"  placeholder="Miejsce urodzenia (pole obowiązkowe)" required value = "{{ pre_miejsce_urodzenia }}">
+		     <br>
+		     
+		     <input type="checkbox" name="cel_czlon_sportowy" id="cel_czlon_sportowy">
+		     <label for="cel_czlon_sportowy">Cel członkostwa sportowy </label>
+		     <input type="text" name="licencja" id="inputLicencja" class="form-control"  placeholder="Numer licencji zawodniczej" value = "{{ pre_licencja }}">
+		     <input type="text" name="nr_patentu_strzeleckiego" id="inputNr_patentu_strzeleckiego" class="form-control"  placeholder="Numer patentu strzeleckiego" value = "{{ pre_nr_patentu_strzeleckiego }}">
+		     <input type="checkbox" name="pozwolenie_sportowy" id="pozwolenie_sportowy"  value = "{{pre_pozwolenie_sportory }}">
+		     <label for="pozwolenie_sportowy">Posiadam pozwolenie na broń sportowy </label>
+		     <br>
+		     <br>
+
+
+
+		     <input type="checkbox" name="cel_czlon_kolekcjonerski" id="cel_czlon_kolekcjonerski">
+		     <label for="cel_czlon_kolekcjonerski">Cel członkostwa kolekcjonerski </label>
+		     <br>
+		     <input type="checkbox" name="pozwolenie_kolekcjonerski" id="pozwolenie_kolekcjonerski" >
+		     <label for="pozwolenie_kolekcjonerski">Posiadam pozwolenie na broń kolekcjonerski </label>
+		     <br>
+		     <br>
+		     <input type="text" name="licencja_sedziego" id="inputLicencja_sedziego" class="form-control"  placeholder="Licencja sędziego" value = "{{pre_licencja_sedziego }}">
+		     <input type="password" name="password1" class="form-control" id="inputPassword1" placeholder="Hasło" required>
+		     <input type="password" name="password2" class="form-control" id="floatingPassword2" placeholder="Potwierdź hasło" required>
+		     <br>
+		     <input type="checkbox" name="rodo_accepted" id="rodo_accepted">
+		     <label for="rodo_accepted">Akceptuję RODO </label>
+			{% for field in registration_form %}
+				<p>
+					{% for error in field.errors %}
+						<p style="color: red;">{{field.name}}: {{error}}</p>
+					{% endfor %}
+				</p>
+			{% endfor %}
+
+			{% if registration_form.non_field_errors %}
+				<div style="color: red;">
+					<p>{{registration_form.non_field_errors}}</p>
+				</div>
+			{% endif %}
+
+		  	<script src='https://www.google.com/recaptcha/api.js'></script>
+			<div class="g-recaptcha" data-sitekey="6LdlCvIdAAAAADUy--NINmX-DYBtkD5T6aOzNP4I"></div>
+
+		    <button class="w-100 btn btn-lg btn-primary" type="submit">Zarejestruj</button>
+		 </form>
+
+		<div class="border-top pt-3">
+			<small class="text-muted">
+				Masz już konto? <a class="ml-2" href="#">Zaloguj się!</a>
+			</small>
+		</div>
+
+	      <div class="col-auto">
+	          <div class="container px-2 py-4">
+	          <p class="text-justify">
+	            Zgodnie z art. 13 ust. 1 i ust. 2 ROZPORZĄDZENIE PARLAMENTU
+	            EUROPEJSKIEGO I RADY (UE) 2016/679 z dnia 27 kwietnia 2016 r. w
+	            sprawie ochrony osób fizycznych w związku z przetwarzaniem danych
+	            osobowych i w sprawie swobodnego przepływu takich danych oraz uchylenia
+	            dyrektywy 95/46/WE (ogólne rozporządzenie o ochronie danych) informuję,
+	            że Administratorem danych osobowych jest Legionowskie Towarzystwo
+	            Sportowe. Kontakt do Administratora Danych
+	            Osobowych:  sekcjamilosnikow@gmail.com
+	            <br>
+	            <br>
+	            Państwa dane osobowe mogą być przetwarzane w celu:r
+	            <br>
+	            - uczestnictwa w zawodach strzeleckich i będą przetwarzane przez
+	            okres 6 lat od końca roku, w którym odbyły się zawody.
+	            <br>
+	            <br>
+	            Pani/Pana dane osobowe mogą zostać udostępnione podmiotom
+	            udostępnionym z mocy prawa lub podmiotom współpracującym z
+	            Administratorem Danych Osobowych w zakresie obsługi finansowo -
+	            księgowej oraz IT.
+	            <br>
+	            <br>
+	            Administrator Danych Osobowych nie planuje przekazywania Pani/Pana
+	            danych osobowych do państw trzecich lub organizacji międzynarodowych.
+	            Posiada Pani/Pan prawo dostępu do treści swoich danych oraz prawo ich
+	            sprostowania, usunięcia, ograniczenia przetwarzania, prawo do przenoszenia
+	            danych, prawo wniesienia sprzeciwu.
+	            <br>
+	            <br>
+	            Ma Pani/Pan prawo wniesienia skargi do właściwego organu nadzorczego w
+	            zakresie ochrony danych osobowych.
+	            <br>
+	            <br>
+	            Podanie przez Panią/Pana danych osobowych jest warunkiem korzystania z
+	            serwisu. Jest Pani/Pan zobowiązana/-y do ich podania, a konsekwencją
+	            niepodania danych osobowych będzie brak możliwości współpracy z
+	            Administratorem.
+	            <br>
+	            <br>
+	            Administrator Danych Osobowych nie realizuje oraz nie planuje realizacji
+	            operacji w sposób zautomatyzowany, w tym profilowania, o którym mowa w
+	            art. 22 ust. 1 i 4, ogólnego rozporządzenia o ochronie danych.
+
+
+	          </p>
+	        </div>
+	      </div>
+
+
+	</div>
+{% endblock %}

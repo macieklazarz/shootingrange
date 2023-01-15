@@ -1,0 +1,21 @@
+{% extends 'blog_base.html' %}
+{% block content %}
+    {% for post in posts %}
+        <article class="media content-section">
+            <div class="media-body container-fluid">
+                <div class="article-metadata">
+                    <a class="mr-2" >{{ post.author }}</a>
+                    <small class="text-muted">{{ post.created_on }}</small>
+                </div>
+                	{% if post.image %}
+                		<img class="img-fluid" src={{ post.image.url }}>
+                	{% endif %}
+                    <h2><a class="article-title" href="{% url 'PostDetailView' post.slug %}">{{ post.title }}</a></h2>
+                    <p class="article-content">{{post.content}}</p>
+                    <hr>               
+                    <p class="article-content text-justify"><strong>Komentarze: </strong><span class="badge badge-dark ml-2">{{ post.comments.count }}</span></p>               
+            </div>
+        </article>
+    {% endfor %}
+    
+{% endblock %}

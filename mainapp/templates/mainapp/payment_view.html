@@ -1,0 +1,66 @@
+{% extends 'blog_base.html' %}
+
+
+
+{% block content %}
+
+
+
+    <div class="container">
+
+
+      <div class="content-section">
+
+      	{% if payments %}
+
+			<div class="row justify-content-center">
+				<div class="col-auto">
+					<h4 class="text-center">Twoje płatności</h4>
+					<div class="table-responsive">
+						<table class="table table-hover table-responsive table-bordered mx-auto w-auto align-middle md:text-center table-condensed table-striped">
+							<thead class="table-secondary">
+								<tr>
+									<td class="m"><b>Rok</b></td>
+									<td class="m"><b>Data płatności</b></td>
+									<td class="m"><b>Status płatności</b></td>
+
+								</tr>
+							</thead>
+							{% for j in payments %}
+								<tr>
+									<td class="m">{{j.year}}</td>
+									<td class="m">{{j.created_on}}</td>
+									<td class="m">{{j.result}}</td>
+
+								</tr>
+							{% endfor %}
+
+						</table>
+					</div>
+				</div>
+			</div>
+			{% else %}
+			<div class="row justify-content-center">
+				<div class="col-auto">
+					<h4 class="text-center">Nie dokonałeś jeszcze płatności</h4>
+
+				</div>
+			</div>
+
+			{% endif %}
+
+			        <a href="{% url 'payment_redirect' %}"><button class="w-100 btn btn-lg btn-primary" type="submit">Opłać składkę</button></a>
+
+
+
+      </div>
+
+       
+    </div>
+
+
+
+
+
+
+    {% endblock content %}
