@@ -31,7 +31,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-ka!8qloj8+*%tqprv@a7$sd#q7iwa_f)8-2r5%*jsbqpwca&ct'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['shootingrange-env.eu-central-1.elasticbeanstalk.com',]
 
@@ -51,8 +51,9 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_tailwind',
     'tinymce',
-    # 'widget_tweaks',
+    'storages',
     # 'agents',
+
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -147,17 +148,19 @@ EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 
-
+AWS_ACCESS_KEY_ID = 'AKIA3RQZJ6ESRSIYWUVR'
+AWS_SECRET_ACCESS_KEY = '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'
 
 
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),]
-
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+### Django storages - use this for production
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 MEDIA_URL = '/media/'
-
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+### Django storages - use in production
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 
 
