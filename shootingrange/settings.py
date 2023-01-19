@@ -154,8 +154,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 STATIC_URL = '/static/'
 STATIC_ROOT = 'static'
 
-STATIC_URL = '/media/'
-STATIC_ROOT = 'media'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = 'media'
 
 
 
