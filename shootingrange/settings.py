@@ -33,7 +33,8 @@ SECRET_KEY = 'django-insecure-ka!8qloj8+*%tqprv@a7$sd#q7iwa_f)8-2r5%*jsbqpwca&ct
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['shootingrange-env.eu-central-1.elasticbeanstalk.com',]
+ALLOWED_HOSTS = ['zawodyltstest.xyz','http://zawodyltstest.xyz/','www.zawodyltstest.xyz']
+
 
 # Application definition
 
@@ -152,12 +153,10 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),]
+MEDIA_URL = 'static//media/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media')
 
 
 
