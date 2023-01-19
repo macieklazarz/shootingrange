@@ -31,10 +31,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-ka!8qloj8+*%tqprv@a7$sd#q7iwa_f)8-2r5%*jsbqpwca&ct'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['zawodyltstest.xyz','http://zawodyltstest.xyz/','www.zawodyltstest.xyz']
-
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -153,10 +152,12 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 
 STATIC_URL = '/static/'
-MEDIA_URL = 'static//media/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),]
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
 
 
 
